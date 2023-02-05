@@ -39,4 +39,4 @@ def getRoutes(request):
         },
     ]
 
-    return Response(routes, safe=False)
+    return Response(routes)
