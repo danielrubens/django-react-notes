@@ -4,7 +4,7 @@ import getNotes from '../api'
 const NotesList = () => {
   const [notes, setNotes] = useState([])
 
-  useEffect(() => {getNotes().then((data) => setNotes(data))}, [notes])
+  useEffect(() => {getNotes().then((data) => setNotes(data))}, [])
 
   const showElements = (note) => {
     const keys = Object.keys(note)
