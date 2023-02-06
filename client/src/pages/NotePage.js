@@ -9,8 +9,11 @@ const NotePage = () => {
   useEffect(() => {getById(params.id).then((data) => setNote(data))}, [params.id])
 
   return (
-    <div>
-        <h1>{note.body}</h1>
+    <div className="note">
+        <div className="note-header">
+
+        </div>
+        <textarea defaultValue={note.body}>{note.body}</textarea>
     </div>
   )
 }
