@@ -5,11 +5,12 @@ import {getById} from '../api'
 const NotePage = () => {
   const [note, setNote] = useState('')
   const params = useParams()
+
   useEffect(() => {getById(params.id).then((data) => setNote(data))}, [params.id])
-  console.log(note)
+
   return (
     <div>
-        <h1>Single Note</h1>
+        <h1>{note.body}</h1>
     </div>
   )
 }

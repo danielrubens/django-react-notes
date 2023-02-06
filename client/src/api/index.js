@@ -14,7 +14,7 @@ const getAll = async () => {
 const getById = async (id) => {
    try{
       const response = await API.get(`notes/${id}/`)
-      return response
+      return response.data
       }catch(error){
        console.log(error.stack)
       }
