@@ -1,12 +1,12 @@
-import './App.css';
-import Header from './components/Header';
+import {Route, Switch} from 'react-router-dom';
 import NotesList from './pages/NotesList';
+import './App.css';
+
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <NotesList />
-    </div>
+    <Switch>
+      <Route exact path="/" component={NotesList} />
+    </Switch>
   );
 }
 
