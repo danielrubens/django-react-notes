@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import getNotes from '../api'
+import {getAll} from '../api'
 import Header from '../components/Header';
 
 const NotesList = () => {
   const [notes, setNotes] = useState([])
 
-  useEffect(() => {getNotes().then((data) => setNotes(data))}, [])
+  useEffect(() => {getAll().then((data) => setNotes(data))}, [])
 
   return (
     <div>

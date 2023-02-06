@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const API = axios.create({baseURL: 'api/' })
+const API = axios.create({baseURL: 'http://127.0.0.1:8000/api/' })
 
-const getNotes = async () => {
+const getAll = async () => {
    try{
    const response = await API.get('notes/')
    return response.data
@@ -11,4 +11,13 @@ const getNotes = async () => {
    }
 }
 
-export default getNotes
+const getById = async (id) => {
+   try{
+      const response = await API.get(`notes/${id}/`)
+      return response
+      }catch(error){
+       console.log(error.stack)
+      }
+}
+
+export { getAll, getById }
