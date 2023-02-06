@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {getAll} from '../api'
-import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 
 const NotesList = () => {
@@ -10,7 +9,6 @@ const NotesList = () => {
 
   return (
     <div>
-      <Header />
       <div className="notes-list">
         {notes.map((note, index) => (
         <Link to={`/note/${note.id}`}>
