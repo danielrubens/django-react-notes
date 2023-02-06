@@ -6,17 +6,21 @@ const NotesList = () => {
 
   useEffect(() => {getNotes().then((data) => setNotes(data))}, [])
 
-  const showElements = (note) => {
-    const keys = Object.keys(note)
-    return(
-      <>
-      {keys.map((el, index) => (<p key={`${index}-${el}-${keys[index]}`}>{note[keys[index]]}</p>))}
-      </>
-    )
-  }
+  // const showElements = (note) => {
+  //   const keys = Object.keys(note)
+  //   return(
+  //     <>
+  //     {keys.map((el, index) => (<p key={`${index}-${el}-${keys[index]}`}>{note[keys[index]]}</p>))}
+  //     </>
+  //   )
+  // }
 
   return (
-    <div>{notes.map((note, index) => (<p key={index}>{showElements(note)}</p>))}</div>
+    <div>
+      <div className="notes-list">
+        {notes.map((note, index) => (<h3 key={index}>{note.body}</h3>))}
+      </div>
+    </div>
   )
 }
 
