@@ -12,8 +12,17 @@ const NotesList = () => {
     console.log(notes)
   }
 
+  const showElements = (note) => {
+    const keys = Object.keys(note)
+    return(
+      <>
+      {keys.map((el, index) => (<p key={`${index}-${el}-${keys[index]}`}>{note[keys[index]]}</p>))}
+      </>
+    )
+  }
+
   return (
-    <div>{notes.map((i) => (<p>{console.log(i)}</p>))}</div>
+    <div>{notes.map((note, index) => (<p key={index}>{showElements(note)}</p>))}</div>
   )
 }
 
