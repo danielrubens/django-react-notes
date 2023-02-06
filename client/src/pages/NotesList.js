@@ -1,16 +1,10 @@
 import React, {useState, useEffect} from 'react'
+import getNotes from '../api'
 
 const NotesList = () => {
   const [notes, setNotes] = useState([])
 
-  useEffect(() => {getNotes()}, [])
-
-  const getNotes = async () => {
-    const response = await fetch('http://127.0.0.1:8000/api/notes/')
-    const data = await response.json()
-    setNotes(data)
-    console.log(notes)
-  }
+  useEffect(() => {getNotes().then((data) => setNotes(data))}, [notes])
 
   const showElements = (note) => {
     const keys = Object.keys(note)
