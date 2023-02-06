@@ -7,7 +7,7 @@ import Header from './components/Header';
 function App() {
   return (
     <Switch>
-      <div className="container">
+      <div className="container dark">
         <div className="app">
           <Header />
           <Route exact path="/" component={NotesList} />
