@@ -7,7 +7,7 @@ function App() {
   return (
     <Switch>
       <Route exact path="/" component={NotesList} />
-      <Route path="/notes/:id" component={NotePage} />
+      <Route path="/note/:id" component={NotePage} />
     </Switch>
   );
 }

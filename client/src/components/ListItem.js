@@ -1,8 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const ListItem = ({notes}) => {
+const ListItem = ({note}) => {
   return (
-    <div>ListItem</div>
+    <Link>
+          <h3>{note.body}</h3>
+    </Link>
   )
 }
 
