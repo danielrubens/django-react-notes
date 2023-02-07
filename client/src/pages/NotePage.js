@@ -13,7 +13,8 @@ const NotePage = () => {
   useEffect(() => {getById(params.id).then((data) => setNote(data))}, [params.id])
 
   const handleSumibt = async () => {
-    await update(params.id, note)
+    const response = await update(params.id, note)
+    setNote(response)
     history.push('/')
   }
 
@@ -24,7 +25,7 @@ const NotePage = () => {
             <ArrowLeft onClick={handleSumibt}/>
           </h3>
         </div>
-        <textarea onChange={({target}) => setNote({...note, 'body': target.value})} defaultValue={note.body}>{note.body}</textarea>
+        <textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note.body}</textarea>
     </div>
   )
 }
