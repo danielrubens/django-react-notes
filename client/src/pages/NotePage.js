@@ -11,16 +11,25 @@ const NotePage = () => {
 
   useEffect(() => {getById(params.id).then((data) => setNote(data))}, [params.id])
 
+  const updateNote = async () => {
+    fetch(`http://localhost:8000/api/notes/${noteId}/update/`,{
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(note)
+    }
+    )
+  }
+
   return (
     <div className="note">
         <div className="note-header">
           <h3>
-            <Link to="/">
-              <ArrowLeft />
-            </Link>
+            <ArrowLeft />
           </h3>
         </div>
-        <textarea defaultValue={note.body}>{note.body}</textarea>
+        <textarea onChange={({target}) => setNote({...note, 'body': target.value})} defaultValue={note.body}>{note.body}</textarea>
     </div>
   )
 }
