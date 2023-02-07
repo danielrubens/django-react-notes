@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
-import {getById} from '../api'
+import {getById, update } from '../api'
 import {ReactComponent as ArrowLeft} from '../assets/arrow-left.svg'
 import { useHistory } from 'react-router-dom'
 
@@ -12,19 +12,8 @@ const NotePage = () => {
 
   useEffect(() => {getById(params.id).then((data) => setNote(data))}, [params.id])
 
-  const updateNote = async () => {
-    fetch(`http://localhost:8000/api/notes/${params.id}/update/`,{
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(note)
-    }
-    )
-  }
-
-  const handleSumibt = () => {
-    updateNote()
+  const handleSumibt = async () => {
+    await update(params.id, note)
     history.push('/')
   }
 
