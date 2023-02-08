@@ -3,14 +3,23 @@ import axios from 'axios'
 const API = axios.create({baseURL: 'http://127.0.0.1:8000/api/' })
 
 const create = async (note) => {
-   try{
-   const response = await API.post('notes/create/', {body: note})
-   console.log(response)
-   // return response.data
-   }catch(error){
-      console.log(error.stack)
-      }
-   }
+   fetch('http://127.0.0.1:8000/api/notes/create/', {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     body: JSON.stringify(note)
+   })
+ }
+
+// const create = async (note) => {
+//    try{
+//    const response = await API.post('notes/create/', {body: note})
+//    return response.data.body
+//    }catch(error){
+//       console.log(error.stack)
+//       }
+//    }
 
 const getAll = async () => {
    try{
