@@ -13,7 +13,7 @@ const NotesList = () => {
     if(title.length > 45){
       title = title.slice(0,45)
     }
-    const subtitle = `${new Date(note.updated).toLocaleDateString()}: ${note.body.slice(title.length)}`
+    const subtitle = `${new Date(note.updated).toLocaleDateString()}: ${note.body.slice(title.length, 70)}`
     return (<><h3>{title}</h3><p><span>{subtitle}</span></p></>)
   }
   return (
