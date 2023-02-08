@@ -2,10 +2,11 @@ import axios from 'axios'
 
 const API = axios.create({baseURL: 'http://127.0.0.1:8000/api/' })
 
-const create = async () => {
+const create = async (note) => {
    try{
-   const response = await API.get('notes/')
-   return response.data
+   const response = await API.post('notes/create/', {body: note})
+   console.log(response)
+   // return response.data
    }catch(error){
       console.log(error.stack)
       }
@@ -47,4 +48,4 @@ const remove = async (id) => {
       }
    }
 
-export { getAll, getById, update, remove }
+export { create, getAll, getById, update, remove }

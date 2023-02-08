@@ -12,17 +12,28 @@ const NotePage = () => {
 
   useEffect(() => {getById(params.id).then((data) => setNote(data))}, [params.id])
 
+  const createNote = async () => {
+    fetch('http://127.0.0.1:8000/api/notes/create/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(note)
+    })
+  }
+
   const updateNote = async () => {
-    if (params.id === 'new' && !note.body) deleteNote(params.id)
-    else if(params.id !== 'new'){
-      const response = await update(params.id, note)
-      setNote(response)
-      history.push('/')
-    }
+    const response = await update(params.id, note)
+    setNote(response)
+    history.push('/')
   }
 
   const deleteNote = async() => {
-    await remove(params.id)
+    if(params.id === 'new'){
+      createNote(note)
+    } else{
+      await remove(params.id) 
+    }
     history.push('/')
   }
 
@@ -32,15 +43,14 @@ const NotePage = () => {
           <h3>
             <ArrowLeft onClick={updateNote}/>
           </h3>
-          {params.id !== 'new' ? 
-            (<button onClick={deleteNote}>Delete</button>) : (<button>Done</button>)
-          }
+          <button onClick={deleteNote}>Delete</button>
         </div>
-        {params.id !== 'new' ? 
-        (<textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note.body}</textarea>)
-        :(<textarea onChange={({target}) => setNote(target.value)}>{note}</textarea>)
-          }
-          {/* <textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note.body}</textarea> */}
+        {params.id === 'new' ? 
+        (<textarea onChange={({target}) => setNote(target.value)}>{note}</textarea>)
+        :(<textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note}</textarea>)
+        
+      }
+        {/* <textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note}</textarea> */}
     </div>
   )
 }
