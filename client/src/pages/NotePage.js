@@ -9,9 +9,11 @@ const NotePage = () => {
   const [note, setNote] = useState('')
   const params = useParams()
   const history = useHistory();
-
+  
   useEffect(() => {getById(params.id).then((data) => setNote(data))}, [params.id])
-
+  
+  const [button] = useState(() => params.id === 'new' ? 'Add' : 'Delete')
+  
   const createNote = async () => {
     fetch('http://127.0.0.1:8000/api/notes/create/', {
       method: 'POST',
@@ -28,7 +30,7 @@ const NotePage = () => {
     history.push('/')
   }
 
-  const deleteNote = async() => {
+  const handleNote = async() => {
     if(params.id === 'new'){
       createNote(note)
     } else{
@@ -43,7 +45,7 @@ const NotePage = () => {
           <h3>
             <ArrowLeft onClick={updateNote}/>
           </h3>
-          <button onClick={deleteNote}>Delete</button>
+          <button onClick={handleNote}>{button}</button>
         </div>
         {params.id === 'new' ? 
         (<textarea onChange={({target}) => setNote(target.value)}>{note}</textarea>)
