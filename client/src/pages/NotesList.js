@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import {getAll} from '../api'
 import { Link } from 'react-router-dom';
+import {getAll} from '../api'
+import AddButton from '../components/AddButton';
 
 const NotesList = () => {
   const [notes, setNotes] = useState([])
@@ -22,6 +23,7 @@ const NotesList = () => {
         </Link>
         ))}
       </div>
+      <AddButton />
     </div>
   )
 }
