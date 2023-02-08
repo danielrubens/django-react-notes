@@ -9,12 +9,12 @@ const NotesList = () => {
   useEffect(() => {getAll().then((data) => setNotes(data))}, [])
 
   const showElements = (note) => {
-    const date = new Date(note.updated).toLocaleDateString()
     let title = note.body.split('\n')[0]
     if(title.length > 45){
       title = title.slice(0,45)
     }
-    return (<><h3>{title}</h3><p><span>{date}</span></p></>)
+    const subtitle = `${new Date(note.updated).toLocaleDateString()}: ${note.body.slice(title.length)}`
+    return (<><h3>{title}</h3><p><span>{subtitle}</span></p></>)
   }
   return (
     <div className="notes">
