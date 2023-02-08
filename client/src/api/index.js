@@ -29,4 +29,13 @@ const update = async (id, note) => {
          }
       }
 
-export { getAll, getById, update }
+   const remove = async (id) => {
+      try{
+         const response = await API.delete(`notes/${id}/delete/`)
+         return response.data.body
+         }catch(error){
+            console.log(error.stack)
+         }
+      }
+
+export { getAll, getById, update, remove}
