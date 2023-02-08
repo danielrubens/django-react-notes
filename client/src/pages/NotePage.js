@@ -13,9 +13,12 @@ const NotePage = () => {
   useEffect(() => {getById(params.id).then((data) => setNote(data))}, [params.id])
 
   const updateNote = async () => {
-    const response = await update(params.id, note)
-    setNote(response)
-    history.push('/')
+    if (params.id === 'new' && !note.body) deleteNote(params.id)
+    else if(params.id !== 'new'){
+      const response = await update(params.id, note)
+      setNote(response)
+      history.push('/')
+    }
   }
 
   const deleteNote = async() => {
@@ -36,8 +39,8 @@ const NotePage = () => {
         {params.id !== 'new' ? 
         (<textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note.body}</textarea>)
         :(<textarea onChange={({target}) => setNote(target.value)}>{note}</textarea>)
-          
           }
+          {/* <textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note.body}</textarea> */}
     </div>
   )
 }
