@@ -7,35 +7,35 @@ const getAll = async () => {
    const response = await API.get('notes/')
    return response.data
    }catch(error){
-    console.log(error.stack)
+      console.log(error.stack)
+      }
    }
-}
 
 const getById = async (id) => {
    try{
       const response = await API.get(`notes/${id}/`)
       return response.data
       }catch(error){
-       console.log(error.stack)
+      console.log(error.stack)
       }
-}
+   }
 
 const update = async (id, note) => {
-      try{
-         const response = await API.put(`notes/${id}/update/`, {body: note})
-         return response.data.body
-         }catch(error){
-          console.log(error.stack)
-         }
+   try{
+      const response = await API.put(`notes/${id}/update/`, {body: note})
+      return response.data.body
+      }catch(error){
+         console.log(error.stack)
       }
+   }
 
-   const remove = async (id) => {
-      try{
-         const response = await API.delete(`notes/${id}/delete/`)
-         return response.data.body
-         }catch(error){
-            console.log(error.stack)
-         }
+const remove = async (id) => {
+   try{
+      const response = await API.delete(`notes/${id}/delete/`)
+      return response.data.body
+      }catch(error){
+         console.log(error.stack)
       }
+   }
 
-export { getAll, getById, update, remove}
+export { getAll, getById, update, remove }

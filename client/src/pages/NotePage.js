@@ -29,7 +29,7 @@ const NotePage = () => {
           <h3>
             <ArrowLeft onClick={updateNote}/>
           </h3>
-          <button onClick={deleteNote}>Delete Note</button>
+          <button onClick={deleteNote}>Delete</button>
         </div>
         <textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note.body}</textarea>
     </div>
