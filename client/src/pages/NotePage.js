@@ -29,9 +29,15 @@ const NotePage = () => {
           <h3>
             <ArrowLeft onClick={updateNote}/>
           </h3>
-          <button onClick={deleteNote}>Delete</button>
+          {params.id !== 'new' ? 
+            (<button onClick={deleteNote}>Delete</button>) : (<button>Done</button>)
+          }
         </div>
-        <textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note.body}</textarea>
+        {params.id !== 'new' ? 
+        (<textarea onChange={({target}) => setNote(target.value)} defaultValue={note.body}>{note.body}</textarea>)
+        :(<textarea onChange={({target}) => setNote(target.value)}>{note}</textarea>)
+          
+          }
     </div>
   )
 }
