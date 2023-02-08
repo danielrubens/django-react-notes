@@ -24,7 +24,6 @@ const create = async (note) => {
 const getAll = async () => {
    try{
    const response = await API.get('notes/')
-   console.log(response.data)
    return response.data
    }catch(error){
       console.log(error.stack)
